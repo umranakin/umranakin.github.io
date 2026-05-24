@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ümran Akın — IT Professional & Web Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #faf9f7;
+      --text:      #1a1a18;
+      --secondary: #6b6b63;
+      --accent:    #6b1e2e;
+      --divider:   #e8e6e1;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── FADE IN ── */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade { opacity: 0; animation: fadeIn .7s ease forwards; }
+    .fade:nth-child(1) { animation-delay: .05s; }
+    .fade:nth-child(2) { animation-delay: .18s; }
+    .fade:nth-child(3) { animation-delay: .31s; }
+    .fade:nth-child(4) { animation-delay: .44s; }
+    .fade:nth-child(5) { animation-delay: .57s; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(250, 249, 247, 0.93);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 0.5px solid var(--divider);
+    }
+    .nav-inner {
+      max-width: 860px; margin: 0 auto; padding: 0 40px;
+      height: 52px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-mono {
+      font-size: .95rem; font-weight: 700; color: var(--accent);
+      text-decoration: none; letter-spacing: .01em;
+    }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a {
+      font-size: .78rem; font-weight: 500;
+      letter-spacing: .06em; text-transform: uppercase;
+      color: var(--secondary); text-decoration: none;
+      transition: color .15s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── MAIN ── */
+    main {
+      max-width: 860px; margin: 0 auto;
+      padding: 80px 40px;
+    }
+
+    /* ── SECTION LABEL ── */
+    .label {
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 3px; text-transform: uppercase;
+      color: var(--secondary);
+      margin-bottom: 48px;
+    }
+
+    section { padding: 88px 0; }
+    section + section { border-top: 0.5px solid var(--divider); }
+
+    /* ── HERO ── */
+    #hero { padding-top: 100px; }
+
+    .hero-name {
+      font-size: clamp(48px, 8vw, 72px);
+      font-weight: 700;
+      line-height: 0.95;
+      letter-spacing: -2px;
+      color: var(--text);
+      margin-bottom: 28px;
+    }
+
+    .hero-divider-row {
+      display: flex; align-items: center; gap: 20px;
+      margin-bottom: 20px;
+    }
+    .hero-rule {
+      flex: 0 0 40px; height: 0.5px;
+      background: var(--text); opacity: .35;
+    }
+    .hero-role {
+      font-size: 15px; font-weight: 400;
+      color: var(--secondary); white-space: nowrap;
+    }
+
+    .hero-location {
+      font-size: 13px; color: var(--secondary);
+      margin-bottom: 48px;
+    }
+
+    .hero-links { display: flex; gap: 28px; flex-wrap: wrap; }
+    .arrow-link {
+      font-size: 14px; font-weight: 500;
+      color: var(--text); text-decoration: none;
+      display: inline-flex; align-items: baseline; gap: 4px;
+      transition: color .15s;
+      border-bottom: 0.5px solid transparent;
+    }
+    .arrow-link:hover { color: var(--accent); border-bottom-color: var(--accent); }
+    .arrow-link .arr { font-size: 11px; }
+
+    /* ── PROJECTS ── */
+    .project-list { display: flex; flex-direction: column; }
+
+    .project-row {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      gap: 32px; padding: 36px 0;
+      border-bottom: 0.5px solid var(--divider);
+    }
+    .project-row:first-child { border-top: 0.5px solid var(--divider); }
+
+    .project-left { flex: 1; min-width: 0; }
+
+    .project-name {
+      font-size: 20px; font-weight: 600;
+      color: var(--text); margin-bottom: 8px;
+      transition: color .15s;
+      display: inline-block;
+    }
+    .project-row:hover .project-name { color: var(--accent); }
+
+    .project-desc {
+      font-size: 14px; color: var(--secondary); line-height: 1.65;
+      max-width: 480px;
+    }
+
+    .project-right {
+      flex-shrink: 0; text-align: right;
+      display: flex; flex-direction: column; align-items: flex-end; gap: 12px;
+    }
+
+    .project-tags {
+      font-size: 12px; color: var(--secondary);
+      line-height: 1.8;
+    }
+
+    .project-link {
+      font-size: 12px; font-weight: 500;
+      color: var(--secondary); text-decoration: none;
+      display: inline-flex; align-items: baseline; gap: 3px;
+      transition: color .15s;
+    }
+    .project-link:hover { color: var(--accent); }
+
+    /* ── CERTIFICATIONS ── */
+    .cert-subsection { margin-bottom: 0; }
+    .cert-sublabel {
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 3px; text-transform: uppercase;
+      color: var(--secondary);
+      margin-top: 40px; margin-bottom: 0;
+    }
+    .cert-sublabel:first-child { margin-top: 0; }
+
+    .cert-list { display: flex; flex-direction: column; }
+
+    .cert-row {
+      display: flex; justify-content: space-between; align-items: baseline;
+      gap: 24px; padding: 16px 0;
+      border-bottom: 0.5px solid var(--divider);
+    }
+    .cert-row:first-child { border-top: 0.5px solid var(--divider); }
+
+    .cert-name {
+      font-size: 15px; font-weight: 500; color: var(--text);
+      text-decoration: none; display: inline-flex; align-items: baseline; gap: 5px;
+    }
+    a.cert-name { transition: color .15s; cursor: pointer; }
+    a.cert-name:hover { color: var(--accent); }
+    a.cert-name .arr { font-size: 11px; }
+
+    .cert-detail { font-size: 13px; color: var(--secondary); flex-shrink: 0; text-align: right; }
+
+    /* ── CONTACT ── */
+    .contact-text {
+      font-size: 15px; color: var(--secondary);
+      margin-bottom: 32px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 0.5px solid var(--divider);
+      text-align: center;
+      padding: 32px 40px;
+      font-size: 12px; color: var(--secondary);
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 620px) {
+      .nav-inner { padding: 0 20px; }
+      .nav-links { gap: 18px; }
+      main { padding: 40px 20px; }
+      section { padding: 64px 0; }
+      #hero { padding-top: 80px; }
+      .hero-name { letter-spacing: -1px; }
+      .project-row { flex-direction: column; gap: 16px; }
+      .project-right { align-items: flex-start; text-align: left; }
+      .cert-row { flex-direction: column; gap: 6px; align-items: flex-start; }
+      .cert-detail { text-align: left; }
+      footer { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#hero" class="nav-mono">ÜA</a>
+      <ul class="nav-links">
+        <li><a href="#work">Work</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- HERO -->
+    <section id="hero">
+      <h1 class="hero-name fade">Ümran<br>Akın</h1>
+      <div class="hero-divider-row fade">
+        <span class="hero-rule"></span>
+        <span class="hero-role">IT Professional &amp; Web Developer</span>
+      </div>
+      <p class="hero-location fade">Ankara, Turkey</p>
+      <div class="hero-links fade">
+        <a href="https://github.com/umranakin" target="_blank" rel="noopener" class="arrow-link">
+          GitHub <span class="arr">↗</span>
+        </a>
+        <a href="mailto:umranakin12@gmail.com" class="arrow-link">
+          umranakin12@gmail.com <span class="arr">↗</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="work">
+      <p class="label">Selected Work</p>
+      <div class="project-list">
+
+        <div class="project-row">
+          <div class="project-left">
+            <span class="project-name">muratyıldırım.com</span>
+            <p class="project-desc">Full-stack web application for a real estate consultant. Python automation scrapes listings from 4 platforms and syncs data daily.</p>
+          </div>
+          <div class="project-right">
+            <p class="project-tags">Next.js · TypeScript · Python · Supabase · Vercel</p>
+            <a href="https://www.xn--muratyldrm-2ubcb.com" target="_blank" rel="noopener" class="project-link">
+              Live site <span>↗</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="project-row">
+          <div class="project-left">
+            <span class="project-name">BİLEN</span>
+            <p class="project-desc">Offline corporate IT asset management system with smart tagging, CSV import/export, maintenance tracking and task calendar.</p>
+          </div>
+          <div class="project-right">
+            <p class="project-tags">Python · Flask · SQLite · Chart.js · FullCalendar</p>
+            <a href="https://github.com/umranakin/bilen" target="_blank" rel="noopener" class="project-link">
+              GitHub <span>↗</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section id="certifications">
+      <p class="label">Certifications</p>
+
+      <!-- Coursera -->
+      <p class="cert-sublabel">Coursera</p>
+      <div class="cert-list">
+        <div class="cert-row">
+          <a href="https://coursera.org/share/5367a68eb68a44f27f799e31739f401f" target="_blank" rel="noopener" class="cert-name">
+            Google IT Support Professional Certificate <span class="arr">↗</span>
+          </a>
+          <span class="cert-detail">6 courses · Google</span>
+        </div>
+        <div class="cert-row">
+          <span class="cert-name">Google IT Automation with Python</span>
+          <span class="cert-detail">6 courses · Google · <span style="color:var(--secondary)">In progress</span></span>
+        </div>
+        <div class="cert-row">
+          <a href="https://coursera.org/share/8d1e2175db73dd50790527e49cd00e34" target="_blank" rel="noopener" class="cert-name">
+            Google AI Essentials <span class="arr">↗</span>
+          </a>
+          <span class="cert-detail">5 courses · Google</span>
+        </div>
+      </div>
+
+      <!-- BTK Academy -->
+      <p class="cert-sublabel">BTK Academy</p>
+      <div class="cert-list">
+        <div class="cert-row">
+          <span class="cert-name">Ağ Teknolojileri ve Cihaz Yönetimi</span>
+          <span class="cert-detail">Networking &amp; Systems</span>
+        </div>
+        <div class="cert-row">
+          <span class="cert-name">İleri Ağ Teknolojileri</span>
+          <span class="cert-detail">Networking &amp; Systems</span>
+        </div>
+        <div class="cert-row">
+          <span class="cert-name">Ağ Temelleri</span>
+          <span class="cert-detail">Networking &amp; Systems</span>
+        </div>
+        <div class="cert-row">
+          <span class="cert-name">Bilgisayar Ağlarına Giriş</span>
+          <span class="cert-detail">Networking &amp; Systems</span>
+        </div>
+        <div class="cert-row">
+          <span class="cert-name">Windows 11 İşletim Sistemi</span>
+          <span class="cert-detail">Operating Systems</span>
+        </div>
+        <div class="cert-row">
+          <span class="cert-name">Windows 10 İşletim Sistemi</span>
+          <span class="cert-detail">Operating Systems</span>
+        </div>
+        <div class="cert-row">
+          <span class="cert-name">İşletim Sistemlerine Giriş</span>
+          <span class="cert-detail">Operating Systems</span>
+        </div>
+        <div class="cert-row">
+          <span class="cert-name">Pardus Arayüz Kullanımı</span>
+          <span class="cert-detail">Operating Systems</span>
+        </div>
+        <div class="cert-row">
+          <span class="cert-name">Versiyon Kontrolleri: Git ve GitHub</span>
+          <span class="cert-detail">Tools</span>
+        </div>
+        <div class="cert-row">
+          <span class="cert-name">Bilgi Teknolojilerine Giriş</span>
+          <span class="cert-detail">Fundamentals</span>
+        </div>
+        <div class="cert-row">
+          <span class="cert-name">Doküman Tipleri ve Veri Formatları</span>
+          <span class="cert-detail">Fundamentals</span>
+        </div>
+        <div class="cert-row">
+          <span class="cert-name">Yapay Zekaya Giriş</span>
+          <span class="cert-detail">Fundamentals</span>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <p class="label">Contact</p>
+      <p class="contact-text">Available for freelance projects and collaborations.</p>
+      <div class="hero-links">
+        <a href="mailto:umranakin12@gmail.com" class="arrow-link">
+          umranakin12@gmail.com <span class="arr">↗</span>
+        </a>
+        <a href="https://github.com/umranakin" target="_blank" rel="noopener" class="arrow-link">
+          GitHub <span class="arr">↗</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>&copy; 2026 Ümran Akın</footer>
+
+</body>
+</html>
